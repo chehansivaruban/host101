@@ -19,8 +19,9 @@ class Api(Resource):
         request_data = request.data
         request_data = json.loads(request_data.decode('utf-8'))
         date = request_data['date']
-        time = request_data['time']
-        p1 = Prediction(date, time)
+        startTime = request_data['startTime']
+        endTime = request_data['endTime']
+        p1 = Prediction(date, startTime,endTime)
         irr = p1.getIrradiance()
         e1 = Productivity(irr,1,41)
         pro = e1.getUnits()

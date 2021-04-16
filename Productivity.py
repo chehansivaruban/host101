@@ -9,4 +9,3 @@ class Productivity:
     def getUnits(self):
         units= (self.irradiance*self.area*self.hours)/1000
         return units
-

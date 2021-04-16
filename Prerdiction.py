@@ -4,38 +4,47 @@ from datetime import datetime
 
 
 class Prediction:
-    def __init__(self, date, time):
+    def __init__(self, date, time,endTime):
         self.date = date
         self.time = time
+        self.endTime = endTime
 
     def getIrradiance(self):
-
-        date_time_obj = datetime.strptime(self.time,'%H:%M:%S')
+        date_time_obj = datetime.strptime(self.time, '%H:%M:%S')
         hour = date_time_obj.hour
 
-        print(hour)
+        end_date_time_obj = datetime.strptime(self.endTime, '%H:%M:%S')
+        endHour = end_date_time_obj.hour
+        # print(hour)
         date_obj = datetime.strptime(self.date, '%Y-%m-%d')
 
         day_of_month = date_obj.day
-        print(day_of_month)
+        # print(day_of_month)
 
         day_of_week = date_obj.weekday()
-        print(day_of_week)
+        # print(day_of_week)
 
         month = date_obj.month
-        print(month)
+        # print(month)
 
         year = date_obj.year
-        print(year)
+        # print(year)
         with open('final_decision_Tree_model.pkl', 'rb') as f:
             model = pickle.load(f)
-        test_data = np.array([hour, day_of_month, day_of_week, month, year])
-        irradaiance = model.predict(test_data.reshape(1, 5))
-        print(irradaiance[0])
-        return irradaiance[0]
 
-x = Prediction("2005-01-01", "01:00:00")
-x.getIrradiance()
+        numHour = endHour - hour
+        predIrr = 0
+        for i in range(numHour):
+            test_data = np.array([hour, day_of_month, day_of_week, month, year])
+            irradaiance = model.predict(test_data.reshape(1, 5))
+            print(i,irradaiance)
+            hour = hour + 1
+            predIrr= predIrr + irradaiance[0]
+            print(predIrr)
+        return predIrr
+
+# x = Prediction("2005-01-01", "01:00:00")
+# x.getIrradiance()
 
 
 
