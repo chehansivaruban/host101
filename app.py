@@ -29,9 +29,5 @@ class Api(Resource):
 api.add_resource(Api,"/api")
 
 
-
-
-
-
 if __name__ == "__main__":
     app.run(debug=True)

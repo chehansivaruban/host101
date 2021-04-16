@@ -27,7 +27,7 @@ class Prediction:
 
         year = date_obj.year
         print(year)
-        with open('final_decision_Tree_model', 'rb') as f:
+        with open('final_decision_Tree_model.pkl', 'rb') as f:
             model = pickle.load(f)
         test_data = np.array([hour, day_of_month, day_of_week, month, year])
         irradaiance = model.predict(test_data.reshape(1, 5))

@@ -3,3 +3,4 @@ utm==0.7.0
 Flask==1.1.2
 Flask_RESTful==0.3.8
 gunicorn
+scikit-learn
