@@ -27,7 +27,7 @@ class Api(Resource):
         irr = p1.getIrradiance()
         e1 = Productivity(irr,1,capacity)
         pro = e1.getUnits()
-        return pro
+        return round(pro,2)
 
 api.add_resource(Api,"/api")
 
