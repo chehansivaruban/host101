@@ -34,16 +34,19 @@ class Prediction:
 
         numHour = endHour - hour
         predIrr = 0
+        irradianceArray=[]
         for i in range(numHour):
             test_data = np.array([hour, day_of_month, day_of_week, month, year])
             irradaiance = model.predict(test_data.reshape(1, 5))
             print(i,irradaiance)
             hour = hour + 1
             predIrr= predIrr + irradaiance[0]
+            irradianceArray.insert(i,irradaiance[0])
             print(predIrr)
-        return predIrr
+            print(irradianceArray)
+        return irradianceArray
 
-# x = Prediction("2005-01-01", "01:00:00")
+# x = Prediction("2005-04-01", "6:00:00","7:00:00")
 # x.getIrradiance()
 
 

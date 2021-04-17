@@ -21,9 +21,10 @@ class Api(Resource):
         date = request_data['date']
         startTime = request_data['startTime']
         endTime = request_data['endTime']
+        capacity = request_data['capacity']
         p1 = Prediction(date, startTime,endTime)
         irr = p1.getIrradiance()
-        e1 = Productivity(irr,1,41)
+        e1 = Productivity(irr,1,capacity)
         pro = e1.getUnits()
         return pro
 
