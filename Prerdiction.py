@@ -12,9 +12,19 @@ class Prediction:
     def getIrradiance(self):
         date_time_obj = datetime.strptime(self.time, '%H:%M:%S')
         hour = date_time_obj.hour
-
+        changetime = "05:30:00"
+        change_date_time_obj = datetime.strptime(changetime, '%H:%M:%S')
+        hour = hour-change_date_time_obj.hour
+        if hour<0:
+            hour = 0
+        print("new time",hour)
         end_date_time_obj = datetime.strptime(self.endTime, '%H:%M:%S')
         endHour = end_date_time_obj.hour
+        change_date_time_obj = datetime.strptime(changetime, '%H:%M:%S')
+        endHour = endHour - change_date_time_obj.hour
+        if endHour<0:
+            endHour = 0
+        print("new end time", endHour)
         # print(hour)
         date_obj = datetime.strptime(self.date, '%Y-%m-%d')
 
