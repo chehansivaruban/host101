@@ -14,5 +14,5 @@ class Productivity:
             power = int(self.capacity) * int(i) /1000
             totalpower = totalpower+power
         # units= (self.irradiance*self.area*self.hours)/1000
-        print(totalpower)
+
         return totalpower
