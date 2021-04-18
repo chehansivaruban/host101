@@ -16,18 +16,21 @@ class Api(Resource):
         return request_data
 
     def post(self):
-        request_data = request.data
-        request_data = json.loads(request_data.decode('utf-8'))
-        date = request_data['date']
-        startTime = request_data['startTime']
-        print(type(startTime))
-        endTime = request_data['endTime']
-        capacity = request_data['capacity']
-        p1 = Prediction(date, startTime,endTime)
-        irr = p1.getIrradiance()
-        e1 = Productivity(irr,1,capacity)
-        pro = e1.getUnits()
-        return round(pro,2)
+        return "Happy"
+        
+#         request_data = request.data
+#         request_data = json.loads(request_data.decode('utf-8'))
+#         date = request_data['date']
+#         startTime = request_data['startTime']
+#         print(type(startTime))
+#         endTime = request_data['endTime']
+#         capacity = request_data['capacity']
+#         p1 = Prediction(date, startTime,endTime)
+#         irr = p1.getIrradiance()
+#         e1 = Productivity(irr,1,capacity)
+#         pro = e1.getUnits()
+#         return round(pro,2)
+        
 
 
 api.add_resource(Api,"/api")
