@@ -28,7 +28,7 @@ class Api(Resource):
         e1 = Productivity(irr,1,capacity)
         pro = e1.getUnits()
         return round(pro,2)
-       
+
 
 api.add_resource(Api,"/api")
 
