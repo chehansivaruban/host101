@@ -10,8 +10,10 @@ class Prediction:
         self.endTime = endTime
 
     def getIrradiance(self):
+        #process data into needed format for the data science component
         date_time_obj = datetime.strptime(self.time, '%H:%M:%S')
         hour = date_time_obj.hour
+        #change of timezone
         changetime = "05:30:00"
         change_date_time_obj = datetime.strptime(changetime, '%H:%M:%S')
         hour = hour-change_date_time_obj.hour
@@ -23,24 +25,13 @@ class Prediction:
         endHour = endHour - change_date_time_obj.hour
         if endHour<0:
             endHour = 0
-
-
         date_obj = datetime.strptime(self.date, '%Y-%m-%d')
-
         day_of_month = date_obj.day
-
-
         day_of_week = date_obj.weekday()
-
-
         month = date_obj.month
-
-
         year = date_obj.year
-
         with open('final_decision_Tree_model.pkl', 'rb') as f:
             model = pickle.load(f)
-
         numHour = endHour - hour
         predIrr = 0
         irradianceArray=[]
