@@ -10,11 +10,12 @@ app = Flask(__name__)
 api = Api(app)
 
 class Api(Resource):
+    #get request to call the json objects sent to the backend
     def get(self):
         request_data = request.data
         request_data = json.loads(request_data.decode('utf-8'))
         return request_data
-
+    #post request to get the data from front end to do processing
     def post(self):
         request_data = request.data
         request_data = json.loads(request_data.decode('utf-8'))
@@ -28,9 +29,6 @@ class Api(Resource):
         pro = e1.getUnits()
         print("Productivity : ",pro)
         return round(pro,2)
-        
-
-
 api.add_resource(Api,"/api")
 
 
